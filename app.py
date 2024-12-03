@@ -41,6 +41,8 @@ for i, (image, text) in enumerate(images):
 
 #arrange images in a row
 
+st.write("### Facial Recognition in Action") 
+
 image1 = Image.open("fr1.png")
 image2 = Image.open("fr2.jpg")
 image3 = Image.open("fr3.jpg")
@@ -58,7 +60,7 @@ with row2_col1:
 with row2_col2:
     st.image(image4, use_container_width =True)
 
-#add gif
+st.write("### Demo Video (Per User Cloud Storage)")
 
 file_ = open("demo_vid.gif", "rb")
 contents = file_.read()
