@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import base64
 
 # Hide Streamlit’s menu and set the app to fullscreen
 st.markdown(
@@ -37,6 +38,40 @@ for i, (image, text) in enumerate(images):
     with locals()[f"col{i+1}"]:
         st.image(Image.open(image), use_container_width=True)
         st.write(text)
+
+#arrange images in a row
+
+image1 = Image.open("fr1.png")
+image2 = Image.open("fr2.jpg")
+image3 = Image.open("fr3.jpg")
+image4 = Image.open("fr4.jpg")
+
+row1_col1, row1_col2 = st.columns(2)
+row2_col1, row2_col2 = st.columns(2)
+
+with row1_col1:
+    st.image(image1, use_container_width =True)
+with row1_col2:
+    st.image(image2, use_container_width =True)
+with row2_col1:
+    st.image(image3, use_container_width =True)
+with row2_col2:
+    st.image(image4, use_container_width =True)
+
+#add gif
+
+file_ = open("demo_vid.gif", "rb")
+contents = file_.read()
+data_url = base64.b64encode(contents).decode("utf-8")
+file_.close()
+
+st.markdown(
+    f'<img src="data:image/gif;base64,{data_url}" alt="gif">',
+    unsafe_allow_html=True,
+)
+
+#video_path = "demo_vid.mp4"
+#st.video(video_path, start_time=0)
 
 
 # Add placeholders for sorting, sharing, and filtering options (future features)
